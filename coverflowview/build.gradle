@@ -1,5 +1,45 @@
 apply plugin: 'com.android.library'
 
+def versionsNumber = '1.0.0'
+// beschreibt die Versionsnummer und zugleich den Versionsnamen
+ext {
+    bintrayRepo = 'maven'
+    // darf nicht geändert werden
+    bintrayName = 'CoverFlowView'
+    // der Name den wir bei maven eingetragen haben
+
+    publishedGroupId = 'org.appyx.android.lib.coverflowview'
+    // entspricht der GroupId von bintray.com
+    libraryName = 'coverflowview'
+    // Name der Library
+    artifact = 'coverflowview'
+    // der Teil der hinter der org.astra_g kommt also von bei mir test_android
+
+    libraryDescription = 'An implementation of a Android 2.3+ compatible CoverFlowView'
+    // Beschreibung
+
+    siteUrl = 'https://github.com/Appyx/CoverFlowView'
+    // die Übersichtsseite vom Projekt in github.com
+    gitUrl = 'https://github.com/Appyx/CoverFlowView.git'
+    // Url zur Git-Resource
+
+    libraryVersion = versionsNumber
+    // wurden von uns weiter Oben defeniert
+    developerId = 'Appyx'
+    // Deinen Entwicklernamen oder -firma
+    developerName = 'Robert Gstöttner'
+    // Deinen Entwicklernamen oder -firma
+    developerEmail = 'robert.gstoettner@icloud.com'
+    // deine Email-Adresse wo der Nutzer uns schreiben kann
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    // Name unter welche Lizenzvereinbarung wir veröffentlichen
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    // wo die Lizenz nachlesbar ist
+    allLicenses = ["Apache-2.0"]
+    // definierte Lizenz
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
@@ -27,11 +67,15 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:support-v4:24.1.1'
     testCompile 'junit:junit:4.12'
 }
 
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'com.github.dcendents.android-maven'
+afterEvaluate {
+    javadoc.classpath += files(android.libraryVariants.collect { variant ->
+        variant.javaCompile.classpath.files
+    })
+}
 
-group = 'org.appyx.android.lib.coverflowview'
-version = '1.0.0'
+apply from: 'https://raw.githubusercontent.com/attwellBrian/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/attwellBrian/JCenter/master/bintrayv1.gradle'

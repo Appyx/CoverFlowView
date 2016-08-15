@@ -3,7 +3,7 @@ package org.appyx.android.lib.coverflowview;
 import android.widget.FrameLayout;
 
 /**
- * Created by Gstöttner Robert & modified by Adam Oliver on 08/06/16.
+ * Created by Gstöttner Robert and modified by Adam Oliver on 08/06/16.
  */
 
 public class CoverFlowAnimator {
