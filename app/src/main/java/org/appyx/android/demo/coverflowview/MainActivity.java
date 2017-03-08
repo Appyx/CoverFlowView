@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         CoverFlowView.Builder builder = view.getBuilder();
 
         builder.setCoverSpacing(0.5f);
-        builder.setEndlessMode(true);
+        builder.setEndlessMode(false);
         builder.setMatchMiddleMode(true);
         builder.setStartModeLeft(true);
         builder.setMaxCovers(7);

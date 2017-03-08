@@ -2,10 +2,8 @@ package org.appyx.android.demo.coverflowview;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
-import org.appyx.android.demo.coverflowview.R;
 import org.appyx.android.lib.coverflowview.AbstractCoverFlowAdapter;
 
 import java.util.ArrayList;
@@ -28,18 +26,19 @@ public class CoverFlowAdapter extends AbstractCoverFlowAdapter {
         mData.add(R.drawable.banner1_r_cropped4);
         mData.add(R.drawable.banner1_r_cropped5);
         mData.add(R.drawable.banner1_r_cropped6);
-        mData.add(R.drawable.banner1_r_cropped7);
+//        mData.add(R.drawable.banner1_r_cropped7);
     }
 
     @Override
     protected void setImageOnView(int index, ImageView imageView) {
+        imageView.setImageResource(mData.get(index));
         //For use with asynchronous image loader.
         //Just set the image on the view when it is finished.
     }
 
     @Override
     protected Bitmap getImage(int index) {
-        return BitmapFactory.decodeResource(mContext.getResources(), mData.get(index));
+        return null;
     }
 
     @Override
